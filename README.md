@@ -1,6 +1,8 @@
-Coffee and Cakes Recommend Sub Committee
+# Recommendation
 
+## データの準備
+使用するデータセットは `datasets/` に配置する。
+自前でダウンロードしてもよいがスクリプトも用意してある
 
-## 使用するデータ
-https://grouplens.org/datasets/movielens/ の recommended for education and development を使用する
-ダウンロードしたのち、`dataset/movie_lens/` の配下に置く
+### MovieLens
+$ scripts/fetch_movie_lens.sh

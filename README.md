@@ -5,4 +5,6 @@
 自前でダウンロードしてもよいがスクリプトも用意してある
 
 ### MovieLens
+```sh
 $ scripts/fetch_movie_lens.sh
+```

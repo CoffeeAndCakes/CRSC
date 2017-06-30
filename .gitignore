@@ -1,10 +1,11 @@
 datasets/movie_lens/*
 !.gitkeep
+.DS_Store
+
 ### https://raw.github.com/github/gitignore/afbff9027d02ccfc680e031f6c295f79ad61662d/Global/IPythonNotebook.gitignore
 
 # Temporary data
 .ipynb_checkpoints/
-
 
 ### https://raw.github.com/github/gitignore/afbff9027d02ccfc680e031f6c295f79ad61662d/python.gitignore
 
@@ -98,5 +99,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-
-

@@ -3,12 +3,15 @@ import pandas as pd
 
 # ref: http://qiita.com/kotaroito/items/6acb58bb16b68a460af9
 
+DATASET_FILE_PATH = "datasets/movie_lens/ml-latest-small/ratings.csv"
+
 def compute_item_similarities(R):
     # n: movie counts
     n = R.shape[1]
     sims = np.zeros((n,n))
 
     for i in range(n):
+        print("%s / %s" % (i, n,))
         for j in range(i, n):
             if i == j:
                 sim = 1.0
@@ -52,8 +55,10 @@ def predict(u, sims):
     # ユーザ u のアイテム i に対する評価の予測
     return prediction
 
-path = "datasets/movie_lens/ml-latest-small/ratings.csv"
-df   = pd.read_csv(path)
-shape = (df.max().ix['userId'], df.max().ix['movieId'])
-R = np.zeros(shape)
+all = pd.read_csv(DATASET_FILE_PATH)
+df  = all[(all["movieId"] <= 1000) & (all["userId"] <= 100)]
+shape = (df.max().ix['userId'] , df.max().ix['movieId'])
+
+R    = np.zeros(shape)
 sims = compute_item_similarities(R)
+print(sims)

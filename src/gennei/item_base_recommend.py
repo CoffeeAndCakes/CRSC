@@ -1,9 +1,12 @@
 import numpy as np
 import pandas as pd
+import os
+import scipy.spatial.distance
 
 # ref: http://qiita.com/kotaroito/items/6acb58bb16b68a460af9
 
 DATASET_FILE_PATH = "datasets/movie_lens/ml-latest-small/ratings.csv"
+dataset_file_path = os.path.normpath(os.path.join(os.path.abspath(""), DATASET_FILE_PATH))
 
 def compute_item_similarities(R):
     # n: movie counts
@@ -32,7 +35,7 @@ def similarity(item1, item2):
     sim = 0.0
     # 共通評価者が 2以上という制約にしている
     if v1.size > 1:
-        sim = 1.0 - cosine(v1, v2)
+        sim = 1.0 - scipy.spatial.distance.cosine(v1, v2)
 
     return sim
 
@@ -55,10 +58,22 @@ def predict(u, sims):
     # ユーザ u のアイテム i に対する評価の予測
     return prediction
 
-all = pd.read_csv(DATASET_FILE_PATH)
-df  = all[(all["movieId"] <= 1000) & (all["userId"] <= 100)]
+all = pd.read_csv(dataset_file_path)
+df  = all[all["movieId"] <= 1000]
 shape = (df.max().ix['userId'] , df.max().ix['movieId'])
 
-R    = np.zeros(shape)
+R = np.zeros(shape)
+for i, row in df.iterrows():
+    R[row['userId'] -1 , row['movieId'] - 1] = row['rating']
+
 sims = compute_item_similarities(R)
-print(sims)
+
+# example
+myself = np.zeros(df.max().ix['movieId'])
+myself[356] = 5.0
+myself[296] = 3.0
+myself[1]   = 3.0
+myself[318] = 4.0
+myself[593] = 4.0
+result = predict(myself, sims)
+print(result)

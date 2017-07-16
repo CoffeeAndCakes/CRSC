@@ -1,7 +1,7 @@
 import csv
 head = "movieId,genre"
 path = './datasets/movie_lens/ml-latest-small/movies.csv'
-
+print(head)
 with open(path, 'r') as f:
     all    = csv.reader(f)
     header = next(all)  # ヘッダーを読み飛ばしたい時

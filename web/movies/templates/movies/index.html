@@ -1,1 +1,10 @@
 <h1>movies list</h1>
+{% if movies %}
+    <ul>
+    {% for movie in movies %}
+        <li><a href="/movies/{{ movie.id }}/">{{ movie.english_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Movie</p>
+{% endif %}

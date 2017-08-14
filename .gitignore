@@ -103,5 +103,4 @@ ENV/
 
 pyvenv.cfg
 pip-selfcheck.json
-bin
-db.sqlite3
+bin/

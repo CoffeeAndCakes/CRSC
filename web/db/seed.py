@@ -26,6 +26,19 @@ def movies():
         movie.year = row[3]
         movie.save()
 
+def genres():
+    from movies.models import Movie, Genre, MovieGenreRelation
+    Genre.objects.all().delete()
+    reader = csv.reader(open(datasets_path + "genres.csv"))
+    next(reader) # header skip
+
+    for row in reader:
+        if not Genre.objects.filter(name=row[1]).exists():
+            genre = Genre()
+            genre.name = row[1]
+            genre.save()
+
 if __name__ == '__main__':
     setup()
     movies()
+    genres()

@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  {% load bootstrap4 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <meta charset="UTF-8">
+  <title>Recommendations</title>
+  <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

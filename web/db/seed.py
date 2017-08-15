@@ -1,8 +1,9 @@
-#!/usr/bin/env python
 import sys
 import os
 import django
 import csv
+
+datasets_path = "../datasets/movie_lens/ml-latest-small/"
 
 def setup():
     # django の設定を使えるようにする
@@ -13,7 +14,17 @@ def setup():
 
 def movies():
     from movies.models import Movie
-    print("import start")
+    Movie.objects.all().delete()
+
+    reader = csv.reader(open(datasets_path + "movie-years.csv"), delimiter="\t")
+    next(reader) # header skip
+
+    for row in reader:
+        movie = Movie()
+        movie.id = row[0]
+        movie.english_title = row[1]
+        movie.year = row[3]
+        movie.save()
 
 if __name__ == '__main__':
     setup()

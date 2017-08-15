@@ -1,10 +1,46 @@
-<h2>タイトル</h2>
-{{ movie.english_title }}
+{% extends 'base.html' %}
 
-<h2>邦題</h2>
-{{ movie.japanese_title }}
+{% block title %} {{movie.english_title}} {% endblock %}
 
-<h2>ジャンル</h2>
-{% for relation in movie.moviegenrerelation_set.all %}
-  <li>{{relation.genre}}</li>
-{% endfor %}
+{% block content %}
+
+<div class="row">
+
+  <div class="col-md-6">
+    {% if movie.image_url %}
+    <img src={{ movie.image_url }} width="350px">
+    {% else %}
+    <p> no image </p>
+    {% endif %}
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">タイトル</h3>
+      </div>
+      <div class="card-block">{{ movie.english_title }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">邦題</h3>
+      </div>
+      <div class="card-block">{{ movie.japanese_title }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">ジャンル</h3>
+      </div>
+      <ul class="list-group">
+        {% for relation in movie.moviegenrerelation_set.all %}
+        <li class="list-group-item">{{relation.genre}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

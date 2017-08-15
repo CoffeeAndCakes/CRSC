@@ -10,3 +10,20 @@ class Movie(models.Model):
     imdb_link = models.TextField()
     tmd_link = models.TextField()
     image_url = models.TextField()
+
+    class Meta:
+        db_table = 'movie'
+
+class Genre(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'genre'
+
+class MovieGenreRelation(models.Model):
+    movie = models.ForeignKey(Movie)
+    genre = models.ForeignKey(Genre)
+
+    class Meta:
+        db_table = 'movie_genre_relation'

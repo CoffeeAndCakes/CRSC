@@ -3,3 +3,8 @@
 
 <h2>邦題</h2>
 {{ movie.japanese_title }}
+
+<h2>ジャンル</h2>
+{% for relation in movie.moviegenrerelation_set.all %}
+  <li>{{relation.genre}}</li>
+{% endfor %}

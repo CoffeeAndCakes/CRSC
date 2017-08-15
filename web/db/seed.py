@@ -40,6 +40,15 @@ def genres():
             )
             genre.save()
 
+        else:
+            genre = Genre.objects.get(name=row[1])
+
+        relation = MovieGenreRelation(
+            movie_id=row[0],
+            genre_id=genre.id
+        )
+        relation.save()
+
 if __name__ == '__main__':
     setup()
     movies()

@@ -1,9 +1,19 @@
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from .models import Movie
 
 def index(request):
-    movies = Movie.objects.all()
+    movie_list = Movie.objects.all()
+    paginator = Paginator(movie_list, 25)
+    page = request.GET.get('page')
+    try:
+        movies = paginator.page(page)
+    except PageNotAnInteger:
+        movies = paginator.page(1)
+    except EmptyPage:
+        movies = paginator.page(paginator.num_pages)
+
     return  render(request, 'movies/index.html', {'movies': movies})
 
 def detail(request, movie_id):

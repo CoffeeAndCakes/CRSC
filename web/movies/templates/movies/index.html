@@ -26,4 +26,20 @@
   <p>No Movie</p>
 {% endif %}
 
+<nav>
+  <ul class="pagination">
+    {% if movies.has_previous %}
+    <li class="previous"><a href="?page={{ movies.previous_page_number }}">前へ</a></li>
+    {% else %}
+    <li class="previous disable">前へ</li>
+    {% endif %}
+
+    {% if movies.has_next %}
+    <li class="next"><a href="?page={{ movies.next_page_number }}">次へ</a></li>
+    {% else %}
+    <li class="next disable">次へ</li>
+    {% endif %}
+  </ul>
+</nav>
+
 {% endblock %}

@@ -1,3 +1,35 @@
-{% load bootstrap4 %}
+{% extends 'base.html' %}
+
+{% block title %}映画を探す{% endblock title %}
 
 <h1>search</h1>
+
+{% block content %}
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#genre" role="tab" data-toggle="tab">ジャンル</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#year" role="tab" data-toggle="tab">年代</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#word" role="tab" data-toggle="tab">検索ワード</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="genre">
+
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="year">
+
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="word">
+
+  </div>
+</div>
+{% endblock %}

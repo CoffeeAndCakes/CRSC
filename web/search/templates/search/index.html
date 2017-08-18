@@ -2,34 +2,52 @@
 
 {% block title %}映画を探す{% endblock title %}
 
-<h1>search</h1>
 
 {% block content %}
 
+<h1>映画を探す</h1>
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" href="#genre" role="tab" data-toggle="tab">ジャンル</a>
+    <a class="nav-link" href="#genre" role="tab" data-toggle="tab">ジャンル</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#year" role="tab" data-toggle="tab">年代</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#word" role="tab" data-toggle="tab">検索ワード</a>
+    <a class="nav-link" href="#word" role="tab" data-toggle="tab">キーワード</a>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade in active" id="genre">
-
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
   </div>
 
-  <div role="tabpanel" class="tab-pane fade" id="year">
-
+  <div role="tabpanel" class="tab-pane fade in active" id="year">
+    <ul>
+      <li>1900年代</li>
+      <li>1910年代</li>
+      <li>1920年代</li>
+      <li>1930年代</li>
+      <li>1940年代</li>
+      <li>1950年代</li>
+      <li>1960年代</li>
+      <li>1970年代</li>
+      <li>1980年代</li>
+      <li>1990年代</li>
+      <li>2000年代</li>
+      <li>2010年代</li>
+    </ul>
   </div>
 
-  <div role="tabpanel" class="tab-pane fade" id="word">
-
+  <div role="tabpanel" class="tab-pane fade in active" id="word">
+    <p>検索キーワード</p>
   </div>
 </div>
 {% endblock %}

@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from movies.models import Genre
 
 def index(request):
-    return  render(request, 'search/index.html')
+    genres = Genre.objects.all()
+    context = {'genres': genres}
+
+    return  render(request, 'search/index.html', context)

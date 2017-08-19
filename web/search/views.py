@@ -18,7 +18,9 @@ def genres_result(request, genre_id):
     return render(request, 'search/genres.html', context)
 
 def years_result(request, year):
-    movies = Movie.objects.filter(year=year)
+    start = int(year)
+    end = int(year) + 9
+    movies = Movie.objects.filter(year__gte=start, year__lte=end)
 
     context = {
         'movies': movies,

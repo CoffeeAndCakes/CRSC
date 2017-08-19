@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from movies.models import Movie, Genre
+from movies.models import Movie, Genre, MovieGenreRelation
 
 def index(request):
     genres = Genre.objects.all()
@@ -9,7 +9,7 @@ def index(request):
 
 def genres_result(request, genre_id):
     genre = Genre.objects.get(pk=genre_id)
-    movies = Movie.objects.all()
+    movies = Movie.objects.filter(moviegenrerelation__genre_id=genre_id)
 
     context = {
         "genre": genre,

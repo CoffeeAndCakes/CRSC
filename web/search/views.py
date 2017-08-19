@@ -28,3 +28,13 @@ def years_result(request, year):
     }
 
     return render(request, 'search/years.html', context)
+
+def keyword_result(request):
+    q = request.GET.get('q')
+    movies = Movie.objects.filter(english_title__contains=q)
+
+    context = {
+        'movies': movies,
+        'keyword': q
+    }
+    return render(request, 'search/keyword.html', context)

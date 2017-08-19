@@ -2,7 +2,6 @@
 
 {% block title %}映画を探す{% endblock title %}
 
-
 {% block content %}
 
 <h1>映画を探す</h1>
@@ -46,7 +45,12 @@
   </div>
 
   <div role="tabpanel" class="tab-pane fade" id="word">
-    <p>検索キーワード</p>
+    <form action="keyword" method="GET" class="form">
+      {% csrf_token %}
+      <label for="q">映画タイトル: </label>
+      <input id="q" type="text" name="q" value="{{ keyword }}">
+      <button type="submit" class="btn btn-primary">検索</button>
+    </form>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}

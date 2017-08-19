@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{year}}年代の映画
+{% endblock title %}
+
+{% block content %}
+<h1>{{year}}年代の映画</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>制作年</th>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for movie in movies %}
+    <tr>
+      <td> {{ movie.year}} </td>
+      <td> <a href="{% url 'detail' movie.id %}">{{ movie.english_title }}</a> </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
